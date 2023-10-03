@@ -1,6 +1,4 @@
-const toCleanUri = (uri) => uri.replace(/ /g, '%20')
-
-export const mapIssuesToNewSeverity = (issues) => {
+const mapIssuesToNewSeverity = (issues) => {
   issues.forEach((issue) => {
     issue.severity = mapToNewSeverity(issue.severity)
     issue.displaySeverity = mapToNewSeverity(issue.displaySeverity || issue.severity)
@@ -28,7 +26,7 @@ export const timeout = (promise, time) => {
   ]).finally(() => clearTimeout(timer))
 }
 
-export const getCheckConclusion = (
+const getCheckConclusion = (
   checkPolicy = 1,
   critical,
   high,
@@ -85,7 +83,7 @@ export const getCheckConclusion = (
   return 'success'
 }
 
-export async function finalizeCheck(
+async function finalizeCheck(
   checkIssues
 ) {
   const issues = mapIssuesToNewSeverity(checkIssues)
@@ -116,4 +114,10 @@ export async function finalizeCheck(
   }
   
   process.exit(0)
+}
+
+module.exports = {
+  mapIssuesToNewSeverity,
+  finalizeCheck,
+  getCheckConclusion
 }
