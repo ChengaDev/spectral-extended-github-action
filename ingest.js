@@ -49,4 +49,18 @@ const toIngestData = ({
   }
 })
 
-module.exports = { toIngestData }
+async function sendIngest(adaptedIngestData, spectralSaasHost, spectralDsn) {
+  console.debug('ingest to be sent', adaptedIngestData)
+  
+  const spectralIngestUrl = `https://${spectralSaasHost}/api/v1/ingest?dsn=${spectralDsn}`
+  const res = await fetch(spectralIngestUrl, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(adaptedIngestData),
+  })
+  return res
+}
+
+module.exports = { toIngestData, sendIngest }
