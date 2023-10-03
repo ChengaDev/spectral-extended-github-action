@@ -43,7 +43,7 @@ async function main() {
     const ingestResponseText = await ingestResponse.text()
     console.debug('got response from ingest: ', ingestResponseText)
 
-    const ingestResponseBody = JSON.parse(resText)
+    const ingestResponseBody = JSON.parse(ingestResponseText)
     finalizeCheck(ingestResponseBody.assetChanges.issuesOnlyInThisVariant)
   } else {
     const ingestResponseBody = await ingestResponse.json()
