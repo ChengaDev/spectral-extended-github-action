@@ -11,5 +11,5 @@ branding:
   icon: "download"
   color: "purple"
 runs:
-  using: "node18"
-  main: "index.js"
+  using: "node20"
+  main: "dist/index.js"
