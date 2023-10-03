@@ -1,4 +1,4 @@
-export const toIngestData = ({
+const toIngestData = ({
   assetId, assetUri, branch, assetName, ref, isPR
 }, {
   items,
@@ -48,3 +48,5 @@ export const toIngestData = ({
     }
   }
 })
+
+module.exports = { toIngestData }

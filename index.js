@@ -12,7 +12,7 @@ const spectralDsn = core.getInput('spectral-dsn')
 const binDir = `${workspace}/bin`;
 const spectralOutputFilePath = `scan_${github.context.sha}.out`
 
-export const getSpectralSaasHost = (dsn) => {
+const getSpectralSaasHost = (dsn) => {
   return (new URL(dsn)).host
 }
 
