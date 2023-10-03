@@ -8,7 +8,7 @@ const spectralOutputFilePath = `scan_${github.context.sha}.out`
 
 async function downloadTool(platform, spectralDsn) {
     const url = `${spectralDsn}/latest/dl/${platform}`
-    return await tc.downloadTool(url, spectralDsn);
+    return await tc.downloadTool(url);
 }
 
 async function installZip(path, platform, spectralDsn) {
