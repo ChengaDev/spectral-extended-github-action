@@ -1,7 +1,9 @@
+const github = require('@actions/github');
 const exec = require("@actions/exec").exec;
 const io = require('@actions/io');
 const tc = require('@actions/tool-cache');
 const fs = require('fs')
+
 const spectralOutputFilePath = `scan_${github.context.sha}.out`
 
 async function downloadTool(platform) {
