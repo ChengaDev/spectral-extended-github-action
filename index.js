@@ -40,16 +40,16 @@ async function main() {
   const ingestResponse = await sendIngest(adaptedIngestData, spectralSaasHost, process.env.SPECTRAL_DSN)
 
   if (ingestResponse.status === 200) { 
-    const ingestResponseText = await res.text()
+    const ingestResponseText = await ingestResponse.text()
     console.debug('got response from ingest: ', ingestResponseText)
 
     const ingestResponseBody = JSON.parse(resText)
     finalizeCheck(ingestResponseBody.assetChanges.issuesOnlyInThisVariant)
   } else {
-    const resBody = await res.json()
+    const ingestResponseBody = await ingestResponse.json()
     throw new Error(
-      `ingest request failed with code ${res.status
-      }. Result: ${JSON.stringify(resBody)}`
+      `ingest request failed with code ${ingestResponse.status
+      }. Result: ${JSON.stringify(ingestResponseBody)}`
     )
   }
 }
