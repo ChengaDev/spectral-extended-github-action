@@ -10,6 +10,7 @@ const fetch = require('node-fetch')
 const workspace = process.env.GITHUB_WORKSPACE;
 const spectralDsn = core.getInput('spectral-dsn')
 const binDir = `${workspace}/bin`;
+const spectralOutputFilePath = `scan_${github.context.sha}.out`
 
 export const getSpectralSaasHost = (dsn) => {
   return (new URL(dsn)).host
@@ -35,7 +36,7 @@ async function main() {
             break;
         default:
             throw new Error(`Platform: ${process.platform} is not supported`);
-    }
+    }  
 
     await core.addPath(binDir)
     await runSpectral()
@@ -133,5 +134,5 @@ function getScanCommand() {
     const spectralArgs = core.getInput('spectral-args')
     return `${process.platform === 'win32' ?
         'spectral.exe' : 'spectral'
-        } ${spectralArgs} --asset-kind git --unpack --internal-output scan.out --nosend`
+        } ${spectralArgs} --asset-kind git --unpack --internal-output ${spectralOutputFilePath} --nosend`
 }
