@@ -15,9 +15,7 @@ const branchName = github.context.ref?.substring('refs/heads/'.length)
 const assetUri = github.context.payload.repository.html_url
 const fullRepoName = github.context.payload.repository.full_name
 const [_, repo] = fullRepoName.split('/')
-const spectralSaasHost = getSpectralSaasHost(
-    process.env.SPECTRAL_DSN
-)
+const spectralSaasHost = getSpectralSaasHost(spectralDsn)
 
 core.exportVariable('SPECTRAL_DSN', spectralDsn);
 
