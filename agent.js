@@ -57,8 +57,10 @@ async function runSpectralScan() {
     process.exit(1)
   }
   
+  const scanResults = JSON.parse(fs.readFileSync(spectralOutputFilePath, 'utf8'))
   console.debug('Spectral scan results', JSON.stringify(scanResults, null, 2))
-  return JSON.parse(fs.readFileSync(spectralOutputFilePath, 'utf8'))
+  
+  return scanResults
 }
 
 async function installSpectral(binDir, spectralDsn) {
