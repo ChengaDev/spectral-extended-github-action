@@ -15,7 +15,7 @@ const getSortedIssues = (issues) => {
   })
 }
 
-export const timeout = (promise, time) => {
+const timeout = (promise, time) => {
   let timer
   return Promise.race([
     promise,
@@ -117,6 +117,7 @@ async function finalizeCheck(
 }
 
 module.exports = {
+  timeout,
   mapIssuesToNewSeverity,
   finalizeCheck,
   getCheckConclusion
