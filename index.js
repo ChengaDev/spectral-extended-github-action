@@ -8,8 +8,6 @@ const getSpectralSaasHost = (dsn) => {
   return (new URL(dsn)).host
 }
 
-core.exportVariable('SPECTRAL_DSN', spectralDsn);
-
 const workspace = process.env.GITHUB_WORKSPACE;
 const spectralDsn = core.getInput('spectral-dsn')
 const binDir = `${workspace}/bin`;
@@ -21,8 +19,10 @@ const spectralSaasHost = getSpectralSaasHost(
     process.env.SPECTRAL_DSN
 )
 
+core.exportVariable('SPECTRAL_DSN', spectralDsn);
+
 async function main() {
-  await installSpectral(binDir)
+  await installSpectral(binDir, spectralDsn)
   
   const scanResults = await runSpectralScan()
   const adaptedIngestData = toIngestData(

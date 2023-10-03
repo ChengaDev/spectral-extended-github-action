@@ -6,20 +6,20 @@ const fs = require('fs')
 
 const spectralOutputFilePath = `scan_${github.context.sha}.out`
 
-async function downloadTool(platform) {
+async function downloadTool(platform, spectralDsn) {
     const url = `${spectralDsn}/latest/dl/${platform}`
-    return await tc.downloadTool(url);
+    return await tc.downloadTool(url, spectralDsn);
 }
 
-async function installZip(path, platform) {
+async function installZip(path, platform, spectralDsn) {
   await io.mkdirP(path);
-  const downloadPath = await downloadTool(platform)
+  const downloadPath = await downloadTool(platform, spectralDsn)
   await tc.extractTar(downloadPath, path)
 }
 
-async function installExecutable(path) {
+async function installExecutable(path, spectralDsn) {
   await io.mkdirP(path);
-  const downloadPath = await downloadTool('exe')
+  const downloadPath = await downloadTool('exe', spectralDsn)
   await io.mv(downloadPath, `${path}/spectral.exe`)
 }
 
@@ -60,16 +60,16 @@ async function runSpectralScan() {
   return JSON.parse(fs.readFileSync(spectralOutputFilePath, 'utf8'))
 }
 
-async function installSpectral(binDir) {
+async function installSpectral(binDir, spectralDsn) {
     switch (process.platform) {
   case 'win32':
-      await installExecutable(binDir)
+      await installExecutable(binDir, spectralDsn)
       break;
   case 'linux':
-      await installZip(binDir, process.platform)
+      await installZip(binDir, process.platform, spectralDsn)
       break;
   case 'darwin':
-      await installZip(binDir, 'mac')
+      await installZip(binDir, 'mac', spectralDsn)
       break;
   default:
       throw new Error(`Platform: ${process.platform} is not supported`);
