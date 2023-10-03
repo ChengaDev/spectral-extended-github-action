@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install and run Spectral CI
-        uses: spectralops/spectral-extended-github-action@v1.0
+        uses: ChengaDev/spectral-extended-github-action@v1.0
         with:
           spectral-dsn: ${{ secrets.SPECTRAL_DSN }}
           spectral-args: scan --ok
@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install and run Spectral Audit
-        uses: spectralops/spectral-extended-github-action@v1.0
+        uses: ChengaDev/spectral-extended-github-action@v1.0
         with:
           spectral-dsn: ${{ secrets.SPECTRAL_DSN }}
           spectral-args: github -k repo -t ${{ secrets.MY_GITHUB_TOKEN }} https://github.com/ChengaDev/spectral-extended-github-action --include-tags base,audit --ok
@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install and run Spectral CI
-        uses: spectralops/spectral-extended-github-action@v1.0
+        uses: ChengaDev/spectral-extended-github-action@v1.0
         with:
           spectral-dsn: ${{ secrets.SPECTRAL_DSN }}
           spectral-args: scan --ok
@@ -40,7 +40,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install and run Spectral Audit
-        uses: spectralops/spectral-extended-github-action@v1.0
+        uses: ChengaDev/spectral-extended-github-action@v1.0
         with:
           spectral-dsn: ${{ secrets.SPECTRAL_DSN }}
           spectral-args: github -k repo -t ${{ secrets.MY_GITHUB_TOKEN }} https://github.com/ChengaDev/spectral-extended-github-action --include-tags base,audit --ok
@@ -50,7 +50,7 @@ jobs:
   #   steps:
   #     - uses: actions/checkout@v3
   #     - name: Install and run Spectral CI
-  #       uses: spectralops/spectral-extended-github-action@v1.0
+  #       uses: ChengaDev/spectral-extended-github-action@v1.0
   #       with:
   #         spectral-dsn: ${{ secrets.SPECTRAL_DSN }}
   #         spectral-args: scan --ok
@@ -60,7 +60,7 @@ jobs:
   #   steps:
   #     - uses: actions/checkout@v3
   #     - name: Install and run Spectral Audit
-  #       uses: spectralops/spectral-extended-github-action@v1.0
+  #       uses: ChengaDev/spectral-extended-github-action@v1.0
   #       with:
   #         spectral-dsn: ${{ secrets.SPECTRAL_DSN }}
   #         spectral-args: github -k repo -t ${{ secrets.MY_GITHUB_TOKEN }} https://github.com/ChengaDev/spectral-extended-github-action --include-tags base,audit --ok
