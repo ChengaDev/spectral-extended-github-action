@@ -23,7 +23,7 @@ jobs:
         uses: spectralops/spectral-extended-github-action@v1.0
         with:
           spectral-dsn: ${{ secrets.SPECTRAL_DSN }}
-          spectral-args: github -k repo -t ${{ secrets.MY_GITHUB_TOKEN }} https://github.com/SpectralOps/spectral-github-action --include-tags base,audit --ok
+          spectral-args: github -k repo -t ${{ secrets.MY_GITHUB_TOKEN }} https://github.com/ChengaDev/spectral-extended-github-action --include-tags base,audit --ok
   macos-ci:
     name: Spectral macos CI
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
         uses: spectralops/spectral-extended-github-action@v1.0
         with:
           spectral-dsn: ${{ secrets.SPECTRAL_DSN }}
-          spectral-args: github -k repo -t ${{ secrets.MY_GITHUB_TOKEN }} https://github.com/SpectralOps/spectral-github-action --include-tags base,audit --ok
+          spectral-args: github -k repo -t ${{ secrets.MY_GITHUB_TOKEN }} https://github.com/ChengaDev/spectral-extended-github-action --include-tags base,audit --ok
   # windows-ci:
   #   name: Spectral windows CI
   #   runs-on: windows-latest
@@ -63,4 +63,4 @@ jobs:
   #       uses: spectralops/spectral-extended-github-action@v1.0
   #       with:
   #         spectral-dsn: ${{ secrets.SPECTRAL_DSN }}
-  #         spectral-args: github -k repo -t ${{ secrets.MY_GITHUB_TOKEN }} https://github.com/SpectralOps/spectral-github-action --include-tags base,audit --ok
+  #         spectral-args: github -k repo -t ${{ secrets.MY_GITHUB_TOKEN }} https://github.com/ChengaDev/spectral-extended-github-action --include-tags base,audit --ok
