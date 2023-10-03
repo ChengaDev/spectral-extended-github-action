@@ -1,0 +1,15 @@
+name: "Spectral Scan"
+description: "Automated Secrets, Misconfiguration, and IaC Misconfiguration detection by SpectralOps"
+inputs:
+  spectral-dsn:
+    description: "Your Spectral DSN"
+    required: true
+  spectral-args:
+    description: "Arguments for Spectral scan"
+    required: true
+branding:
+  icon: "download"
+  color: "purple"
+runs:
+  using: "node18"
+  main: "index.js"
