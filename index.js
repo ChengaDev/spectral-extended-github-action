@@ -59,7 +59,7 @@ async function installExecutable(path) {
     await io.mv(downloadPath, `${path}/spectral.exe`)
 }
 
-export const pathExist = (filePath) => {
+const pathExist = (filePath) => {
   try {
     return fs.existsSync(filePath)
   } catch (err) {
